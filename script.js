@@ -24,21 +24,21 @@ $(document).ready(function () {
                     buttonValue = "";
                 break;
             case "=":
-                buttonValue= "";
+                buttonValue = "";
                 let calcValueMassive = currentCalcValue.replace(" ", "")
                     .replace("*", " * ")
                     .replace("/", " / ")
-                    .replace("+"," + ")
+                    .replace("+", " + ")
                     .replace("-", " - ")
                     .split(" ");
                 for (let i = 0; i < calcValueMassive.length; i++) { //Цикл на деление/умножение
-                    if(calcValueMassive[i] === "*"){
+                    if (calcValueMassive[i] === "*") {
                         calcValueMassive[i] = calcValueMassive[i - 1] * calcValueMassive[i + 1];
                         calcValueMassive[i - 1] = undefined;
                         calcValueMassive[i + 1] = undefined;
                         calcValueMassive = calcValueMassive.filter(number => number !== undefined);
                     }
-                    if(calcValueMassive[i] === "/"){
+                    if (calcValueMassive[i] === "/") {
                         calcValueMassive[i] = calcValueMassive[i - 1] / calcValueMassive[i + 1];
                         calcValueMassive[i - 1] = undefined;
                         calcValueMassive[i + 1] = undefined;
@@ -46,13 +46,13 @@ $(document).ready(function () {
                     }
                 }
                 for (let i = 0; i < calcValueMassive.length; i++) { //Цикл на вычитание/сложение
-                    if(calcValueMassive[i] === "+"){
+                    if (calcValueMassive[i] === "+") {
                         calcValueMassive[i] = Number(calcValueMassive[i - 1]) + Number(calcValueMassive[i + 1]);
                         calcValueMassive[i - 1] = undefined;
                         calcValueMassive[i + 1] = undefined;
                         calcValueMassive = calcValueMassive.filter(number => number !== undefined);
                     }
-                    if(calcValueMassive[i] === "-"){
+                    if (calcValueMassive[i] === "-") {
                         calcValueMassive[i] = calcValueMassive[i - 1] - calcValueMassive[i + 1];
                         calcValueMassive[i - 1] = undefined;
                         calcValueMassive[i + 1] = undefined;
